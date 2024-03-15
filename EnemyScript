@@ -1,0 +1,19 @@
+Script Breakdown
+Extends KinematicBody2D: This script is meant for a KinematicBody2D node, making it suitable for 2D games. KinematicBody2D is a type of physics body used for objects that are controlled via code.
+
+Variables: The script defines basic properties like speed and health for the enemy, which you can adjust based on your game's requirements.
+
+_ready Function: This function is called when the node enters the scene tree. Here, you would typically initialize your enemy, such as setting its initial target position. The example target position is just a placeholder; you'll need to adjust this based on your game's logic.
+
+_process Function: Called every frame, it moves the enemy towards the target_position. This simplistic approach uses linear movement, which you might want to replace with a more sophisticated pathfinding system depending on your game design.
+
+take_damage Function: Allows the enemy to take damage. If health drops to zero or below, it calls the die() function.
+
+die Function: Handles the enemy's death. It's a placeholder for any death animations or effects we might want to add. The queue_free() function removes the enemy from the scene.
+
+Customizing the Script
+Depending on the complexity of your tower defense game, we may need to add more functionality to this script. Consider the following enhancements:
+
+Pathfinding: Integrate a pathfinding system to navigate complex maps.
+Attack Mechanics: If your enemies can attack, implement an attack function and call it when in range of the target.
+Animations: Use the AnimationPlayer node to handle animations for different states like moving and dying.

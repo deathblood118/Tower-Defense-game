@@ -1,0 +1,21 @@
+Script Breakdown
+UI Elements: The onready variables are used to grab references to the UI elements in our scene. Replace $CanvasLayer/ScoreLabel, $CanvasLayer/LivesLabel, and $CanvasLayer/GameOverScreen with the actual paths to our UI elements within the scene tree.
+
+Singleton Instance: Similar to the GameManager script, this script uses a singleton pattern (static var instance) for easy access from other scripts without needing to find the UIManager node each time.
+
+UI Update Functions: update_score and update_lives are straightforward functions that update the text of the score and lives labels, respectively. show_game_over makes the game over screen visible.
+
+Reset UI: reset_ui hides the game over screen and resets the score and lives displays. This can be called at the start of a new game or level.
+
+How to Use the UIManager Script
+To integrate the UIManager with our game:
+
+Attach this script to a node in our main scene that will act as the UI manager, ideally a parent node of our UI elements like a CanvasLayer.
+From other scripts, you can now access the UIManager functions to update the UI in response to game events. For instance, when the player scores points or loses a life, you would call UIManager.instance.update_score(new_score) or UIManager.instance.update_lives(new_lives).
+Customizing the Script
+Depending on the UI complexity and game mechanics, you might want to add more functions to manage other UI elements, such as:
+
+Pause menu and options screen.
+Level completion screens and transition animations.
+In-game tutorial or help screens.
+Dynamic HUD elements, like special ability cooldowns or enemy approach warnings.

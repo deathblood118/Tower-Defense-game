@@ -1,0 +1,13 @@
+""""
+    enemy_scene: This variable holds a preloaded scene of your enemy, which you will spawn periodically. Make sure to replace "res://scenes/Enemy.tscn" with the correct path to your enemy scene.
+
+    spawn_timer: A Timer node used to manage the spawning of enemies at regular intervals. Adjust the wait_time for faster or slower spawns.
+    
+    _ready() Function: Initializes the game. It's a good place to set up your game environment, initialize variables, or start the spawn timer.
+    
+    _process(delta) Function: Called every frame and can be used to update game logic that needs to check or change every frame.
+    
+    setup_spawn_timer() Function: Sets up and starts the timer for spawning enemies. This modular approach keeps your code organized.
+    
+    _on_spawn_timer_timeout() Function: Handles the logic for what happens when the spawn timer runs out, in this case, spawning an enemy. You can add logic here to randomize spawn points or set initial properties for the enemies.
+""""  

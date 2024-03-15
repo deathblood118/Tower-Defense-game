@@ -1,0 +1,23 @@
+Script Breakdown
+Singleton Pattern: The instance variable allows this script to act as a singleton, meaning it can be easily accessed from other scripts without needing to find the node in the scene tree each time. You set instance = self in the _ready function to ensure there's only one instance.
+
+Game State Variables: The score and is_game_over variables track the player's score and whether the game is currently in a "game over" state, respectively.
+
+start_game Function: Initializes or resets game states, marking the beginning of a new game session. This is where we typically reset the score, clear any existing game elements, and prepare the game to start afresh.
+
+add_score Function: Increments the score by a specified amount. This function can be called from other scripts (e.g., when an enemy is defeated) to update the game's score. It checks if the game is not over before updating the score to prevent score changes after the game has ended.
+
+game_over Function: Marks the game as over and can trigger any additional logic needed when the game ends, such as displaying a game over screen or stopping enemy spawns.
+
+How to Use the GameManager Script
+To effectively use the GameManager script in your game, we need to:
+
+Attach it to a dedicated node in your main scene, such as a Node named "GameManager".
+Access it from other scripts to update the score or check the game state. Since it's set up as a singleton, you can directly access it using GameManager.instance. For example, to add to the score from another script, you could call GameManager.instance.add_score(10).
+Customizing the Script
+Depending on the complexity and requirements of your tower defense game, you may want to expand the GameManager script with additional functionalities, such as:
+
+Managing levels or stages, including loading and transitioning between levels.
+Tracking player lives or health.
+Handling pause and resume game states.
+Saving and loading game progress.
