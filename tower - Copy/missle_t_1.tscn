@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcgr8pdnfp2od"]
+
+[ext_resource type="Texture2D" uid="uid://cfqn06t2tutc6" path="res://Assets/towerDefense_tile181.png" id="1_amwfn"]
+[ext_resource type="Script" path="res://tower/missle_t_1.gd" id="1_hef7g"]
+[ext_resource type="Texture2D" uid="uid://gcg6p852mu4o" path="res://Assets/towerDefense_tile228.png" id="2_awnqs"]
+[ext_resource type="Texture2D" uid="uid://cllpkh3tvl58q" path="res://Assets/New folder/towerDefense_tile251.png" id="3_wqx1y"]
+
+[node name="missleT1" type="Node2D"]
+script = ExtResource("1_hef7g")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_amwfn")
+
+[node name="Turret" type="Sprite2D" parent="."]
+rotation = -0.00872665
+texture = ExtResource("2_awnqs")
+
+[node name="missle1" type="Sprite2D" parent="Turret"]
+position = Vector2(-20, -10)
+texture = ExtResource("3_wqx1y")
+
+[node name="missle2" type="Sprite2D" parent="Turret"]
+position = Vector2(20, -10)
+texture = ExtResource("3_wqx1y")
