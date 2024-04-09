@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://djemkna5lrp8q"
+path="res://.godot/imported/towerDefense_tilesheet.png-03107e375df8abc1774bdcddd2ab696a.image"
+
+[deps]
+
+source_file="res://Assets/Environment/Tilesets/towerDefense_tilesheet.png"
+dest_files=["res://.godot/imported/towerDefense_tilesheet.png-03107e375df8abc1774bdcddd2ab696a.image"]
+
+[params]
+
