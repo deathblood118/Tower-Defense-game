@@ -19,11 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=2034
 window/size/viewport_height=1296
-window/size/window_width_override=576
-window/size/window_height_override=324
 window/stretch/aspect="expand"
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true

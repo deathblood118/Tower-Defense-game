@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://m0n4oip2j03r"]
+
+[ext_resource type="Texture2D" uid="uid://cldpwixmr27fw" path="res://Assets/Enemies/Boat_color1_1.png" id="1_do71q"]
+
+[sub_resource type="GDScript" id="GDScript_5iye4"]
+script/source = "extends CharacterBody2D
+
+@export var speed = 100
+
+func _physics_process(delta):
+	get_parent().set_progress(get_parent().get_progress() + speed*delta)
+	
+	if get_parent().get_progress_ratio() == 1:
+		queue_free()
+	
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56iwf"]
+
+[node name="shipA" type="CharacterBody2D"]
+script = SubResource("GDScript_5iye4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_56iwf")
+
+[node name="BoatColor11" type="Sprite2D" parent="."]
+position = Vector2(4.00003, -0.928932)
+rotation = -1.5708
+scale = Vector2(1.88779, 0.864233)
+texture = ExtResource("1_do71q")
