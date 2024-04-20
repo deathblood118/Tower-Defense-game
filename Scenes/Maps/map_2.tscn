@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3r640jdh35j6"]
+[gd_scene load_steps=13 format=3 uid="uid://c3r640jdh35j6"]
 
 [ext_resource type="Texture2D" uid="uid://cftsyatdodiwh" path="res://Assets/Environment/Tilesets/sloppymess (1).png" id="1_naka3"]
 [ext_resource type="Texture2D" uid="uid://c6pi1isf7kgr5" path="res://Assets/Environment/Tilesets/water tile 32 x32.png" id="2_o37xb"]
 [ext_resource type="Texture2D" uid="uid://cdkv7b3m35282" path="res://Assets/Environment/Props/bigger tree.png" id="4_l3ll5"]
 [ext_resource type="Texture2D" uid="uid://b3uvpdras88ik" path="res://Assets/Environment/Props/Set of Trees.png" id="5_ocmus"]
 [ext_resource type="Script" path="res://Scenes/Maps/PathSpawner.gd" id="5_uucmy"]
+[ext_resource type="PackedScene" uid="uid://dup13l5b60n4v" path="res://Scenes/Tower scenes/red_basic_tower.tscn" id="6_ndfd8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1ej0"]
 texture = ExtResource("1_naka3")
@@ -402,18 +403,16 @@ layer_0/tile_data = PackedInt32Array(524292, 196608, 3, 524293, 327680, 1, 52429
 layer_1/name = "Tree"
 layer_1/tile_data = PackedInt32Array(524306, 3, 0, 524329, 3, 0)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1000, 650)
-scale = Vector2(0.933037, 0.91962)
-enabled = false
-zoom = Vector2(0.9, 0.9)
-position_smoothing_enabled = true
-
 [node name="PathSpawner" type="Node2D" parent="."]
 script = ExtResource("5_uucmy")
 
 [node name="Timer" type="Timer" parent="PathSpawner"]
 wait_time = 3.0
 autostart = true
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="Red Basic Tower" parent="Towers" instance=ExtResource("6_ndfd8")]
+position = Vector2(642.455, 700.409)
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]

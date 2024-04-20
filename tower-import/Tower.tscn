@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxmb6j7hdr0m3"]
 
-[ext_resource type="Texture2D" uid="uid://cfqn06t2tutc6" path="res://Assets/towerDefense_tile181.png" id="1_jh2ne"]
-[ext_resource type="Script" path="res://tower/Tower.gd" id="1_pkac5"]
-[ext_resource type="Texture2D" uid="uid://b6yk38cyfn6x4" path="res://Assets/New folder/towerDefense_tile249.png" id="2_a2cud"]
+[ext_resource type="Texture2D" uid="uid://bd7cfmflw1sus" path="res://Assets/Environment/Tilesets/towerDefense_tile181.png" id="1_jh2ne"]
+[ext_resource type="Script" path="res://tower - Copy/Tower.gd" id="1_pkac5"]
+[ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://Assets/Environment/Tower/towerDefense_tile249.png" id="2_a2cud"]
+
 
 [node name="baseT1" type="Node2D"]
 script = ExtResource("1_pkac5")
