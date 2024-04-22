@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://e8np66yq2w3j"]
 
 [ext_resource type="Script" path="res://Scenes/Tower scenes/red_bullet.gd" id="1_gx7sc"]
-[ext_resource type="Texture2D" uid="uid://dwesjyoxndlrw" path="res://Tower/towerDefense_tile251.png" id="1_vpiov"]
+[ext_resource type="Texture2D" uid="uid://dwesjyoxndlrw" path="res://tower-import/towerDefense_tile251.png" id="1_vpiov"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4gq0"]
 height = 38.3333

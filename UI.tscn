@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://h3vwsn41ye1v"]
+
+[ext_resource type="PackedScene" uid="uid://cdthok45t3x44" path="res://Scenes/Tower scenes/tower_panel.tscn" id="1_eh74c"]
+[ext_resource type="PackedScene" uid="uid://bjtdjkmvjssb8" path="res://Scenes/Tower scenes/green_tower_panel.tscn" id="2_idmkq"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1760.0
+offset_right = 2020.0
+offset_bottom = 260.0
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 260.0
+offset_bottom = 260.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="TowerPanel" parent="Panel/FlowContainer" instance=ExtResource("1_eh74c")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="Panel/FlowContainer" instance=ExtResource("1_eh74c")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="Panel/FlowContainer" instance=ExtResource("1_eh74c")]
+layout_mode = 2
+
+[node name="GreenTowerPanel" parent="Panel/FlowContainer" instance=ExtResource("2_idmkq")]
+layout_mode = 2
+
+[node name="GreenTowerPanel2" parent="Panel/FlowContainer" instance=ExtResource("2_idmkq")]
+layout_mode = 2
+
+[node name="GreenTowerPanel3" parent="Panel/FlowContainer" instance=ExtResource("2_idmkq")]
+layout_mode = 2

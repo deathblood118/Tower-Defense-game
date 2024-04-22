@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdkv7b3m35282" path="res://Assets/Environment/Props/bigger tree.png" id="4_l3ll5"]
 [ext_resource type="Texture2D" uid="uid://b3uvpdras88ik" path="res://Assets/Environment/Props/Set of Trees.png" id="5_ocmus"]
 [ext_resource type="Script" path="res://Scenes/Maps/PathSpawner.gd" id="5_uucmy"]
-[ext_resource type="PackedScene" uid="uid://dup13l5b60n4v" path="res://Scenes/Tower scenes/red_basic_tower.tscn" id="6_ndfd8"]
+[ext_resource type="PackedScene" uid="uid://h3vwsn41ye1v" path="res://UI.tscn" id="7_yx1b7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1ej0"]
 texture = ExtResource("1_naka3")
@@ -412,7 +412,6 @@ autostart = true
 
 [node name="Towers" type="Node2D" parent="."]
 
-[node name="Red Basic Tower" parent="Towers" instance=ExtResource("6_ndfd8")]
-position = Vector2(642.455, 700.409)
+[node name="UI" parent="." instance=ExtResource("7_yx1b7")]
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]

@@ -1,10 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcgr8pdnfp2od"]
 
 [ext_resource type="Texture2D" uid="uid://bd7cfmflw1sus" path="res://Assets/Environment/Tilesets/towerDefense_tile181.png" id="1_amwfn"]
-[ext_resource type="Script" path="res://tower - Copy/missle_t_1.gd" id="1_hef7g"]
+[ext_resource type="Script" path="res://tower-import/missle_t_1.gd" id="1_hef7g"]
 [ext_resource type="Texture2D" uid="uid://bpqsdqt7klbwg" path="res://Assets/Environment/Tilesets/towerDefense_tile228.png" id="2_awnqs"]
-[ext_resource type="Texture2D" uid="uid://dwesjyoxndlrw" path="res://Assets/Environment/Tower/towerDefense_tile251.png" id="3_wqx1y"]
-
+[ext_resource type="Texture2D" uid="uid://dwesjyoxndlrw" path="res://tower-import/towerDefense_tile251.png" id="3_wqx1y"]
 
 [node name="missleT1" type="Node2D"]
 script = ExtResource("1_hef7g")
