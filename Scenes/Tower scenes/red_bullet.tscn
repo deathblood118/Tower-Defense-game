@@ -10,8 +10,8 @@ height = 38.3333
 radius = 34.3293
 
 [node name="Red_bullet" type="CharacterBody2D"]
-rotation = 1.5708
 scale = Vector2(6, 6)
+floor_max_angle = 3.14159
 script = ExtResource("1_gx7sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

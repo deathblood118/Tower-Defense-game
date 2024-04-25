@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var tower = preload("res://Scenes/Tower scenes/red_basic_tower.tscn")
+
+@onready var tower = preload("res://Scenes/Tower scenes/green_tower.tscn")
 var currTile
 
 
@@ -39,7 +40,7 @@ func _on_gui_input(event):
 					var path = get_tree().get_root().get_node("Map_2/Towers")
 					path.add_child(tempTower)
 					tempTower.global_position = event.global_position
-					tempTower.get_node("Area").hide()
+					tempTower.get_node("GArea").hide()
 						
 		else:
 			if get_child_count() > 1:
