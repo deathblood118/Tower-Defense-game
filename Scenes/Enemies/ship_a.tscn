@@ -5,46 +5,30 @@
 [sub_resource type="GDScript" id="GDScript_5iye4"]
 script/source = "extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 500
 var Health = 5
-@onready var key = get_parent().get_parent().get_node(\"Key\")
 
 func _physics_process(delta):
 	get_parent().set_progress(get_parent().get_progress() + speed*delta)
 	
 	if get_parent().get_progress_ratio() == 1:
 		death()
+
 		
 	if Health <= 0:
-		queue_free()
-	
-		
-
-func _process(delta):
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		queue_free()
-		
-		
-	
-		
-		
-
-
-		
-
+		death()
 	
 	
 func death():
 	get_parent().get_parent().queue_free()
 	
-
+	
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56iwf"]
-radius = 9.89949
+radius = 14.6219
 
-[node name="shipA" type="CharacterBody2D" groups=["ship"]]
+[node name="shipA" type="CharacterBody2D"]
 script = SubResource("GDScript_5iye4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
