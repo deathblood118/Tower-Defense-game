@@ -1,9 +1,7 @@
 extends StaticBody2D
 
-
-
-var Bullet = preload("res://Scenes/Tower scenes/green_tower.tscn" )
-var bulletDamage= 5
+var Bullet = preload("res://Scenes/Tower scenes/red_bullet.tscn" )
+var bulletDamage= 15
 var pathName
 var currTargets = []
 var curr
@@ -50,9 +48,7 @@ func turn():
 	get_node("TowerDefenseTile249").look_at(enemy_position)
 	
 		
-		
 
 
 func _on_tower_body_exited(body):
 	pass 
-
