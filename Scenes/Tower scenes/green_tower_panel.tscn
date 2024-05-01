@@ -1,14 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjtdjkmvjssb8"]
 
-[ext_resource type="Script" path="res://Scenes/Tower scenes/tower_panel.gd" id="1_v0i6q"]
-[ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://Tower/towerDefense_tile249.png" id="2_lvmq7"]
+[ext_resource type="Script" path="res://Scenes/Tower scenes/green_tower_panel.gd" id="1_5sdx4"]
+[ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://tower-import/towerDefense_tile249.png" id="2_lvmq7"]
 
 [node name="GreenTowerPanel" type="Panel"]
 custom_minimum_size = Vector2(80, 80)
-offset_left = 1950.0
-offset_right = 2030.0
+offset_right = 80.0
 offset_bottom = 80.0
-script = ExtResource("1_v0i6q")
+script = ExtResource("1_5sdx4")
 
 [node name="TowerDefenseTile249" type="Sprite2D" parent="."]
 position = Vector2(40, 40)

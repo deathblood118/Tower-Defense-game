@@ -10,8 +10,8 @@ height = 38.3333
 radius = 34.3293
 
 [node name="Red_bullet" type="CharacterBody2D"]
-rotation = 1.5708
 scale = Vector2(6, 6)
+floor_max_angle = 3.14159
 script = ExtResource("1_gx7sc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,7 +19,8 @@ position = Vector2(-5, 0.666667)
 shape = SubResource("CapsuleShape2D_d4gq0")
 
 [node name="TowerDefenseTile251" type="Sprite2D" parent="."]
-position = Vector2(-5, 1)
+position = Vector2(10, 1)
+rotation = 2.35619
 scale = Vector2(0.368421, 0.351386)
 texture = ExtResource("1_vpiov")
 
@@ -27,7 +28,6 @@ texture = ExtResource("1_vpiov")
 scale = Vector2(0.940298, 1.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-6.66667, 2)
 shape = SubResource("CircleShape2D_gp8tk")
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

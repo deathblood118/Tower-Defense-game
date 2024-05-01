@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhfoiwy4g1obi"]
+[gd_scene load_steps=4 format=3 uid="uid://bhfoiwy4g1obi"]
 
 [ext_resource type="PackedScene" uid="uid://m0n4oip2j03r" path="res://Scenes/Enemies/ship_a.tscn" id="2_1aggp"]
+[ext_resource type="PackedScene" uid="uid://c2wnq7gjfvk3t" path="res://Scenes/Enemies/key.tscn" id="2_ih5sk"]
 
 [sub_resource type="Curve2D" id="Curve2D_cow7h"]
 _data = {
@@ -16,6 +17,11 @@ curve = SubResource("Curve2D_cow7h")
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(107.147, 734.189)
 rotation = -0.0439591
+loop = false
 
 [node name="shipA" parent="PathFollow2D" instance=ExtResource("2_1aggp")]
 position = Vector2(7, 8)
+
+[node name="Key" parent="." instance=ExtResource("2_ih5sk")]
+position = Vector2(1956.16, 1008.63)
+rotation = -0.0439591

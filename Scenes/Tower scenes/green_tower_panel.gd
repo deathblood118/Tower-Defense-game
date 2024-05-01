@@ -1,6 +1,7 @@
 extends Panel
 
-@onready var tower = preload("res://Scenes/Tower scenes/red_basic_tower.tscn")
+
+@onready var tower = preload("res://Scenes/Tower scenes/green_tower.tscn")
 var currTile
 
 
@@ -15,7 +16,7 @@ func _on_gui_input(event):
 			tempTower.global_position = event.global_position
 			#tempTower.process_mode = Node.PROCESS_MODE_DISABLED
 			
-			tempTower.scale = Vector2(0.4,0.4)
+			tempTower.scale = Vector2(0.32,0.32)
 			#making tower smaller when choosing it
 			 
 		elif event is InputEventMouseMotion and event.button_mask == 1:
@@ -32,7 +33,6 @@ func _on_gui_input(event):
 					get_child(1).get_node("Area").modulate = Color(255,255,255)
 				else:
 					get_child(1).get_node("Area").modulate = Color(0,255,0)
-			
 		elif event is InputEventMouseButton and event.button_mask == 0:
 			#button left release
 			if event.global_position.x >= 1700:
