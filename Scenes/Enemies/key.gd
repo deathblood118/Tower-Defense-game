@@ -28,4 +28,5 @@ func death():
 
 
 func _on_area_2d_body_entered(body):
+	if is_in_group("ship"):
 		Health -= 1

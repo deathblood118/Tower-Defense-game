@@ -1,8 +1,9 @@
 extends CharacterBody2D
 var target
-var Speed = 1000
+var Speed = 200
 var pathName = ""
 var bulletDamage
+var positon
 
 @warning_ignore("unused_parameter")
 func _process(delta):
@@ -16,7 +17,8 @@ func _process(delta):
 
 	look_at(target)
 	
-	move_and_slide()
+	position = position.move_toward(target,Speed *delta)
+	#move_and_collide(velocity * delta)
 
 func _on_area_2d_body_entered(body):
 	if "shipA" in body.name:
