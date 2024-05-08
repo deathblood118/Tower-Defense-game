@@ -4,9 +4,11 @@
 [ext_resource type="Script" path="res://Scenes/Enemies/key.gd" id="1_qnsu2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rww07"]
-radius = 12.4595
+radius = 10.4307
 
 [node name="Key" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_qnsu2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,8 +21,10 @@ scale = Vector2(1.17296, 0.93324)
 texture = ExtResource("1_e4g8v")
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.25, 1.25)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -4.76837e-07)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_rww07")
 

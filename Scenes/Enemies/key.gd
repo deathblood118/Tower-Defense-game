@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-
-@export var Health = 5
+var hp =5
+@export var Health = hp -1
+# first hit doesn't register so -1 number
 
 
 
@@ -24,9 +25,7 @@ func death():
 
 
 
-	
-
 
 func _on_area_2d_body_entered(body):
-	if is_in_group("ship"):
-		Health -= 1
+	if body.is_in_group("ship"):
+		Health = Health - 1
