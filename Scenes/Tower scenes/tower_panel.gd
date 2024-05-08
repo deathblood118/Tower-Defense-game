@@ -24,6 +24,14 @@ func _on_gui_input(event):
 				
 				get_child(1).global_position = event.global_position
 				#Check if on Dirt Tile.
+				var mapPath = get_tree().get_root().get_node("Map_2/TileMap")
+				var tile = mapPath.local_to_map(get_global_mouse_position())
+				currTile = mapPath.get_cell_atlas_coords(0, tile, false)
+				
+				if (currTile == Vector2i(0,0)):
+					get_child(1).get_node("Area").modulate = Color(255,255,255,0.3)
+				else:
+					get_child(1).get_node("Area").modulate = Color(0,255,0,0.3)
 			
 		elif event is InputEventMouseButton and event.button_mask == 0:
 			#button left release

@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dup13l5b60n4v"]
+[gd_scene load_steps=16 format=3 uid="uid://dup13l5b60n4v"]
 
 [ext_resource type="Texture2D" uid="uid://djca1ngkhtmp7" path="res://tower-import/towerDefense_tile250.png" id="1_qrsxf"]
+[ext_resource type="Texture2D" uid="uid://bfypjk005gqpy" path="res://Assets/UI/towerDefense_tile110.png" id="2_gt2vc"]
+[ext_resource type="Texture2D" uid="uid://1eqb70dsj166" path="res://Assets/UI/towerDefense_tile297.png" id="3_shkbh"]
+[ext_resource type="Texture2D" uid="uid://c66toj8pg1bhq" path="res://Assets/UI/towerDefense_tile296.png" id="4_iqmer"]
 
 [sub_resource type="GDScript" id="GDScript_mk3v6"]
 script/source = "extends StaticBody2D
@@ -11,13 +14,32 @@ var pathName
 var currTargets = []
 var curr
 
+var reload = 0
+var range = 200
+
+@onready var timer = get_node(\"Upgrade/ProgressBar/Timer\")
+var startShooting = false
+
+func Shoot():
+	var tempBullet = Bullet.instantiate()
+	tempBullet.pathName = pathName
+	tempBullet.bulletDamage = bulletDamage
+	get_node(\"BulletContainer\").add_child(tempBullet)
+	tempBullet.global_position = $Aim.global_position
+	
+
 func _process(delta):
-	if  is_instance_valid(curr):
+	get_node(\"Upgrade/ProgressBar\").global_position = self.position + Vector2(-40,-81)
+	if is_instance_valid(curr):
 		self.look_at(curr.global_position)
+		if timer.is_stopped():
+			Shoot()
+			timer.start()
+			
 	else:
 		for i in get_node(\"BulletContainer\").get_child_count():
 			get_node(\"BulletContainer\").get_child(i).queue_free()
-
+	update_powers()
 func _on_tower_body_entered(body):
 	if \"shipA\" in body.name:
 		var tempArray = []
@@ -40,10 +62,7 @@ func _on_tower_body_entered(body):
 		curr = currTarget
 		pathName = currTarget.get_parent().name
 		
-		var tempBullet = Bullet.instantiate()
-		tempBullet.pathName = pathName
-		tempBullet.bulletDamage = bulletDamage
-		get_node(\"BulletContainer\").add_child(tempBullet)
+		
 		
 func _physics_process(delta):
 	turn()
@@ -58,20 +77,149 @@ func turn():
 
 func _on_tower_body_exited(body):
 	pass 
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_mask == 1:
+		var towerPath = get_tree().get_root().get_node(\"Map_2/Towers\")
+		for i in towerPath.get_child_count():
+			if towerPath.get_child(i).name != self.name:
+				## hiding everything except for upgrade panel of selected tower
+				towerPath.get_child(i).get_node(\"Upgrade/Upgrade\").hide()
+		get_node(\"Upgrade/Upgrade\").visible = !get_node(\"Upgrade/Upgrade\").visible
+		get_node(\"Upgrade/Upgrade\").global_position = self.position + Vector2(-572,81)
+
+
+func _on_timer_timeout():
+	Shoot()
+
+
+func _on_range_pressed():
+	range += 30
+
+
+func _on_attack_speed_pressed():
+	if reload <= 2:
+		
+		reload += 0.1
+	timer.wait_time = 3 - reload
+
+
+func _on_power_pressed():
+	bulletDamage += 1
+	
+func update_powers():
+	get_node(\"Upgrade/Upgrade/HBoxContainer/Range/Label\").text = str(range)
+	get_node(\"Upgrade/Upgrade/HBoxContainer/Attack Speed/Label\").text = str(3 - reload)
+	get_node(\"Upgrade/Upgrade/HBoxContainer/Power/Label\").text = str(bulletDamage)
+	
+	get_node(\"Tower/CollisionShape2D2\").shape.radius = range
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecca6"]
-radius = 78.45
+radius = 59.574
+
+[sub_resource type="GDScript" id="GDScript_g7mk6"]
+script/source = "extends CollisionShape2D
+
+
+func _ready():
+	hide()
+	
+func _draw(): 
+	var cen = Vector2(0,0)
+	var rad = get_parent().get_parent().range 
+	var col = Color(0,255,0,0.3)
+	draw_circle(cen,rad,col)
+	## drawing circle is meant for increasing range
+		
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ia0ru"]
+bg_color = Color(0.129412, 0.137255, 0.117647, 0.894118)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.192157, 0.396078, 0.858824, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0w7rd"]
+bg_color = Color(0.235294, 0.662745, 0.745098, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.569856, 0.0933511, 0.699768, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a31k7"]
+bg_color = Color(0.713726, 0.670588, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3i7r"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(1, 0, 0.8, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3q6sw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk1b3"]
+bg_color = Color(0.647059, 0.52549, 0.921569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qox8"]
+bg_color = Color(0, 0, 0.0352941, 1)
+
+[sub_resource type="GDScript" id="GDScript_skl8d"]
+resource_local_to_scene = true
+script/source = "extends ProgressBar
+
+
+func _process(delta):
+	self.max_value = get_node(\"Timer\").wait_time
+	self.value = get_node(\"Timer\").time_left
+
+"
 
 [node name="RedTower" type="StaticBody2D"]
 rotation = 1.5708
+collision_layer = 3
+collision_mask = 3
+input_pickable = true
 script = SubResource("GDScript_mk3v6")
+metadata/_edit_horizontal_guides_ = [-704.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.99999, 4.00005)
 shape = SubResource("CircleShape2D_ecca6")
 
 [node name="Aim" type="Marker2D" parent="."]
+position = Vector2(40, 0)
 gizmo_extents = 0.0
 
 [node name="TowerDefenseTile250" type="Sprite2D" parent="."]
@@ -88,15 +236,121 @@ position = Vector2(-9.00001, 0)
 rotation = -1.70344
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_ecca6")
+script = SubResource("GDScript_g7mk6")
 
 [node name="BulletContainer" type="Node2D" parent="."]
-position = Vector2(4, 0.999986)
 
 [node name="Area" type="Panel" parent="."]
-offset_left = -265.0
-offset_top = -255.0
-offset_right = 240.0
-offset_bottom = 257.0
+offset_left = -196.0
+offset_top = -200.0
+offset_right = 170.0
+offset_bottom = 215.0
 
+[node name="Upgrade" type="Node" parent="."]
+
+[node name="Upgrade" type="Panel" parent="Upgrade"]
+visible = false
+offset_left = -572.0
+offset_top = 81.0
+offset_right = 104.0
+offset_bottom = 273.0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ia0ru")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Upgrade/Upgrade"]
+layout_mode = 0
+offset_left = -3.5
+offset_top = 22.5
+offset_right = 670.5
+offset_bottom = 147.5
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Range" type="Button" parent="Upgrade/Upgrade/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0w7rd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a31k7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3i7r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3q6sw")
+
+[node name="Label" type="Label" parent="Upgrade/Upgrade/HBoxContainer/Range"]
+layout_mode = 0
+offset_left = 30.5
+offset_top = 131.5
+offset_right = 101.5
+offset_bottom = 161.5
+text = "1000"
+
+[node name="TowerDefenseTile110" type="Sprite2D" parent="Upgrade/Upgrade/HBoxContainer/Range"]
+position = Vector2(64, 64.5)
+rotation = 1.5708
+texture = ExtResource("2_gt2vc")
+
+[node name="Attack Speed" type="Button" parent="Upgrade/Upgrade/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0w7rd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a31k7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3i7r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3q6sw")
+
+[node name="Label" type="Label" parent="Upgrade/Upgrade/HBoxContainer/Attack Speed"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.656
+anchor_bottom = 0.323
+offset_left = 121.0
+offset_top = 132.5
+offset_right = 110.0
+offset_bottom = 122.125
+text = "1000"
+
+[node name="TowerDefenseTile297" type="Sprite2D" parent="Upgrade/Upgrade/HBoxContainer/Attack Speed"]
+position = Vector2(64.5, 68.5)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("3_shkbh")
+
+[node name="Power" type="Button" parent="Upgrade/Upgrade/HBoxContainer"]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0w7rd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a31k7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l3i7r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3q6sw")
+
+[node name="Label" type="Label" parent="Upgrade/Upgrade/HBoxContainer/Power"]
+layout_mode = 0
+offset_left = 46.5
+offset_top = 132.5
+offset_right = 117.5
+offset_bottom = 162.5
+text = "1000"
+
+[node name="TowerDefenseTile296" type="Sprite2D" parent="Upgrade/Upgrade/HBoxContainer/Power"]
+position = Vector2(61.75, 65.5)
+scale = Vector2(1.83594, 2)
+texture = ExtResource("4_iqmer")
+
+[node name="ProgressBar" type="ProgressBar" parent="Upgrade"]
+offset_left = -40.0
+offset_top = -136.0
+offset_right = 51.0
+offset_bottom = -108.0
+theme_override_styles/background = SubResource("StyleBoxFlat_yk1b3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2qox8")
+value = 50.0
+script = SubResource("GDScript_skl8d")
+
+[node name="Timer" type="Timer" parent="Upgrade/ProgressBar"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
 [connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Range" to="." method="_on_range_pressed"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Attack Speed" to="." method="_on_attack_speed_pressed"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Power" to="." method="_on_power_pressed"]
+[connection signal="timeout" from="Upgrade/ProgressBar/Timer" to="." method="_on_timer_timeout"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://m0n4oip2j03r"]
+[gd_scene load_steps=7 format=3 uid="uid://m0n4oip2j03r"]
 
 [ext_resource type="Texture2D" uid="uid://cldpwixmr27fw" path="res://Assets/Enemies/Boat_color1_1.png" id="1_do71q"]
 
 [sub_resource type="GDScript" id="GDScript_5iye4"]
 script/source = "extends CharacterBody2D
 
-@export var speed = 500
+@export var speed = 1000
 var Health = 5
+
 
 func _physics_process(delta):
 	get_parent().set_progress(get_parent().get_progress() + speed*delta)
@@ -26,9 +27,29 @@ func death():
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56iwf"]
-radius = 14.6219
+radius = 9.40213
 
-[node name="shipA" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em7bd"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_82fet"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_1yo8h"]
+resource_local_to_scene = true
+script/source = "extends ProgressBar
+
+func _ready():
+	self.max_value = get_parent().Health
+
+func _process(delta):
+	self.value = get_parent().Health
+
+"
+
+[node name="shipA" type="CharacterBody2D" groups=["ship"]]
+collision_layer = 3
+collision_mask = 3
 script = SubResource("GDScript_5iye4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -40,3 +61,13 @@ position = Vector2(4.00003, -0.928932)
 rotation = -1.5708
 scale = Vector2(1.88779, 0.864233)
 texture = ExtResource("1_do71q")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -40.0
+offset_top = -136.0
+offset_right = 51.0
+offset_bottom = -108.0
+theme_override_styles/background = SubResource("StyleBoxFlat_em7bd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_82fet")
+value = 50.0
+script = SubResource("GDScript_1yo8h")

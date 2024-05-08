@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://h3vwsn41ye1v"]
+[gd_scene load_steps=5 format=3 uid="uid://h3vwsn41ye1v"]
 
 [ext_resource type="PackedScene" uid="uid://cdthok45t3x44" path="res://Scenes/Tower scenes/tower_panel.tscn" id="1_eh74c"]
 [ext_resource type="PackedScene" uid="uid://bjtdjkmvjssb8" path="res://Scenes/Tower scenes/green_tower_panel.tscn" id="2_idmkq"]
+
+[sub_resource type="GDScript" id="GDScript_6kkoo"]
+script/source = "extends Label
+
+
+func _process(delta):
+	self.text = \"Health: \" + str(Game.Health)
+"
+
+[sub_resource type="GDScript" id="GDScript_a3nc1"]
+script/source = "extends Label
+
+
+func _process(delta):
+	self.text = \"Gold: \" + str(Game.Health)
+"
 
 [node name="UI" type="CanvasLayer"]
 
@@ -34,3 +50,17 @@ layout_mode = 2
 
 [node name="GreenTowerPanel3" parent="Panel/FlowContainer" instance=ExtResource("2_idmkq")]
 layout_mode = 2
+
+[node name="Health" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 100
+text = "Health:"
+script = SubResource("GDScript_6kkoo")
+
+[node name="Gold" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 100
+text = "Health:"
+script = SubResource("GDScript_a3nc1")
