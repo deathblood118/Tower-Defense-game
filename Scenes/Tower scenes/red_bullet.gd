@@ -3,10 +3,10 @@ var target
 var Speed = 1000
 var pathName = ""
 var bulletDamage
-var positon
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
+	
 	var pathSpawnerNode = get_tree().get_root().get_node("Map_2/PathSpawner")
 	for i in pathSpawnerNode.get_child_count():
 		if pathSpawnerNode.get_child(i).name == pathName:
@@ -17,13 +17,9 @@ func _physics_process(delta):
 	look_at(target)
 	
 	move_and_slide()
-	##position = position.move_toward(target,Speed *delta)
-	#move_and_collide(velocity * delta)
 
 func _on_area_2d_body_entered(body):
 	if "shipA" in body.name:
 		body.Health -= bulletDamage
 		hide()
 		queue_free()
-
-

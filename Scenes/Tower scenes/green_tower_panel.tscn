@@ -6,9 +6,10 @@
 
 [node name="GreenTowerPanel" type="Panel"]
 custom_minimum_size = Vector2(80, 80)
-offset_right = 80.0
+offset_left = 1950.0
+offset_right = 2030.0
 offset_bottom = 80.0
-script = ExtResource("1_5sdx4")
+script = ExtResource("1_v0i6q")
 
 [node name="TowerDefenseTile249" type="Sprite2D" parent="."]
 position = Vector2(40, 40)

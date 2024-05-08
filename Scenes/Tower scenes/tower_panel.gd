@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var tower = preload("res://Scenes/Tower scenes/red_basic_tower.tscn")
+@onready var tower = preload("res://Scenes/Tower scenes/green_tower.tscn")
 var currTile
 
 
@@ -15,9 +15,9 @@ func _on_gui_input(event):
 			tempTower.global_position = event.global_position
 			#tempTower.process_mode = Node.PROCESS_MODE_DISABLED
 			
-			tempTower.scale = Vector2(0.4,0.4)
+			tempTower.scale = Vector2(0.5,0.5)
 			#making tower smaller when choosing it
-			 
+			
 		elif event is InputEventMouseMotion and event.button_mask == 1:
 			#button left down and dragging
 			if get_child_count() > 1:
@@ -35,7 +35,7 @@ func _on_gui_input(event):
 			
 		elif event is InputEventMouseButton and event.button_mask == 0:
 			#button left release
-			if event.global_position.x >= 1700:
+			if event.global_position.x >= 1600:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
 				
@@ -43,10 +43,10 @@ func _on_gui_input(event):
 			else:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
-				if currTile != Vector2i(0,0):
+				
 					var path = get_tree().get_root().get_node("Map_2/Towers")
 					path.add_child(tempTower)
-					tempTower.global_position = get_viewport().get_mouse_position()
+					tempTower.global_position = event.global_position
 					tempTower.get_node("Area").hide()
 						
 		else:

@@ -1,12 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://4rshoot608aj"]
 
+[ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://tower-import/towerDefense_tile249.png" id="1_bcsvw"]
 [ext_resource type="Script" path="res://Scenes/Tower scenes/green_tower.gd" id="1_n7s7p"]
 [ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://tower-import/towerDefense_tile249.png" id="2_h6mpa"]
 [ext_resource type="Texture2D" uid="uid://bfypjk005gqpy" path="res://Assets/UI/towerDefense_tile110.png" id="3_81v4e"]
 [ext_resource type="Texture2D" uid="uid://1eqb70dsj166" path="res://Assets/UI/towerDefense_tile297.png" id="4_ew26l"]
 [ext_resource type="Texture2D" uid="uid://c66toj8pg1bhq" path="res://Assets/UI/towerDefense_tile296.png" id="5_vsgbe"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_28xap"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwylw"]
 radius = 78.45
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uynqd"]
@@ -88,12 +89,12 @@ input_pickable = true
 script = ExtResource("1_n7s7p")
 
 [node name="TowerDefenseTile249" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_h6mpa")
+rotation = -1.5708
+texture = ExtResource("1_bcsvw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.99999, 4.00005)
-shape = SubResource("CircleShape2D_28xap")
+shape = SubResource("CircleShape2D_cwylw")
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(0, -40)
@@ -106,15 +107,15 @@ scale = Vector2(2, 2)
 position = Vector2(-9.00001, 0)
 rotation = -1.70344
 scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_28xap")
+shape = SubResource("CircleShape2D_cwylw")
 
 [node name="BulletContainer" type="Node2D" parent="."]
 position = Vector2(0, -60)
 
 [node name="Area" type="Panel" parent="."]
 offset_left = -265.0
-offset_top = -262.0
-offset_right = 260.0
+offset_top = -255.0
+offset_right = 240.0
 offset_bottom = 257.0
 
 [node name="Upgrade" type="Node" parent="."]
