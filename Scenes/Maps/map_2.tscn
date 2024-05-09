@@ -422,6 +422,7 @@ wait_time = 600.0
 autostart = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_nuq7o")]
+visible = false
 offset_left = 749.0
 offset_top = 588.0
 offset_right = 749.0

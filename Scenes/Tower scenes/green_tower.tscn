@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c66toj8pg1bhq" path="res://Assets/UI/towerDefense_tile296.png" id="5_vsgbe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwylw"]
-radius = 78.45
+radius = 31.3209
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uynqd"]
 bg_color = Color(0.129412, 0.137255, 0.117647, 0.894118)
@@ -91,8 +91,8 @@ script = ExtResource("1_n7s7p")
 texture = ExtResource("1_bcsvw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8.99999, 4.00005)
 shape = SubResource("CircleShape2D_cwylw")
+one_way_collision = true
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(0, -40)

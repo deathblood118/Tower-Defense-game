@@ -5,6 +5,7 @@ var currTile
 
 
 func _on_gui_input(event):
+	if Game.Gold >= 10:
 		var tempTower = tower.instantiate()
 		#panel is creeated every time
 		if event is InputEventMouseButton and event.button_mask == 1:
@@ -43,12 +44,12 @@ func _on_gui_input(event):
 			else:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
-				
+				if currTile != Vector2i(0,0):
 					var path = get_tree().get_root().get_node("Map_2/Towers")
 					path.add_child(tempTower)
-					tempTower.global_position = event.global_position
+					tempTower.global_position = get_viewport().get_mouse_position()
 					tempTower.get_node("Area").hide()
-						
+					Game.Gold -= 10
 		else:
 			if get_child_count() > 1:
 				get_child(1).queue_free()

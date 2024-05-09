@@ -1524,6 +1524,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_k6mkq")]
+visible = false
 offset_left = 764.0
 offset_top = 458.0
 offset_right = 764.0
