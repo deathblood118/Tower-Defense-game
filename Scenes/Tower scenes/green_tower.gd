@@ -7,7 +7,7 @@ var currTargets = []
 var curr
 
 var reload = 0
-var range = 400
+var range = 100
 
 @onready var timer = get_node("Upgrade/ProgressBar/Timer")
 var startShooting = false
@@ -17,6 +17,7 @@ func Shoot():
 	tempBullet.pathName = pathName
 	tempBullet.bulletDamage = bulletDamage
 	get_node("BulletContainer").add_child(tempBullet)
+	tempBullet.global_position = $Aim.global_position
 	
 
 func _process(delta):

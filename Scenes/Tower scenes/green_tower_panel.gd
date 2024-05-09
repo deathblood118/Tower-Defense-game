@@ -1,11 +1,12 @@
 extends Panel
 
+
 @onready var tower = preload("res://Scenes/Tower scenes/green_tower.tscn")
 var currTile
 
 
 func _on_gui_input(event):
-	if Game.Gold >= 10:
+	if Game.Gold >= 5:
 		var tempTower = tower.instantiate()
 		#panel is creeated every time
 		if event is InputEventMouseButton and event.button_mask == 1:
@@ -16,9 +17,9 @@ func _on_gui_input(event):
 			tempTower.global_position = event.global_position
 			#tempTower.process_mode = Node.PROCESS_MODE_DISABLED
 			
-			tempTower.scale = Vector2(0.5,0.5)
+			tempTower.scale = Vector2(0.32,0.32)
 			#making tower smaller when choosing it
-			
+			 
 		elif event is InputEventMouseMotion and event.button_mask == 1:
 			#button left down and dragging
 			if get_child_count() > 1:
@@ -30,13 +31,12 @@ func _on_gui_input(event):
 				currTile = mapPath.get_cell_atlas_coords(0, tile, false)
 				
 				if (currTile == Vector2i(0,0)):
-					get_child(1).get_node("Area").modulate = Color(255,255,255,0.3)
+					get_child(1).get_node("Area").modulate = Color(255,255,255)
 				else:
-					get_child(1).get_node("Area").modulate = Color(0,255,0,0.3)
-			
+					get_child(1).get_node("Area").modulate = Color(0,255,0)
 		elif event is InputEventMouseButton and event.button_mask == 0:
 			#button left release
-			if event.global_position.x >= 1600:
+			if event.global_position.x >= 1700:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
 				
@@ -44,12 +44,12 @@ func _on_gui_input(event):
 			else:
 				if get_child_count() > 1:
 					get_child(1).queue_free()
-				
+				if currTile != Vector2i(0,0):
 					var path = get_tree().get_root().get_node("Map_2/Towers")
 					path.add_child(tempTower)
-					tempTower.global_position = event.global_position
+					tempTower.global_position = get_viewport().get_mouse_position()
 					tempTower.get_node("Area").hide()
-					Game.Gold -= 10
+					Game.Gold -= 5
 		else:
 			if get_child_count() > 1:
 				get_child(1).queue_free()

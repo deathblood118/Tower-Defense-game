@@ -1,5 +1,5 @@
 extends Node
 
 
-var Gold = 100
+var Gold = 15
 var Health = 5
