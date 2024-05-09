@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cldpwixmr27fw"
-path="res://.godot/imported/Boat_color1_1.png-7d5008bcf6b7fd32da2dd7b77618b10b.ctex"
+uid="uid://c36rlqj7v61wy"
+path="res://.godot/imported/blue_button04.png-e801a676bc3dfbaad59b490f7a06bb47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/Boat_color1_1.png"
-dest_files=["res://.godot/imported/Boat_color1_1.png-7d5008bcf6b7fd32da2dd7b77618b10b.ctex"]
+source_file="res://Assets/UI/blue_button04.png"
+dest_files=["res://.godot/imported/blue_button04.png-e801a676bc3dfbaad59b490f7a06bb47.ctex"]
 
 [params]
 

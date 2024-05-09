@@ -8,15 +8,18 @@ script/source = "extends Label
 
 
 func _process(delta):
-	self.text = \"Health: \" + str(Game.Health)
+	self.text = \"Health: \" + str(Key.Health)
 "
 
 [sub_resource type="GDScript" id="GDScript_a3nc1"]
 script/source = "extends Label
 
-
+var coin = preload(\"res://Assets/Game/towerDefense_tile272.png\")
 func _process(delta):
 	self.text = \"Gold: \" + str(Game.Gold)
+
+	
+
 "
 
 [node name="UI" type="CanvasLayer"]
@@ -61,14 +64,13 @@ text = "Health:"
 script = SubResource("GDScript_6kkoo")
 
 [node name="Gold" type="Label" parent="."]
-anchors_preset = -1
-anchor_top = -0.007
-anchor_bottom = -0.007
+
 offset_left = 500.0
-offset_top = 0.0720005
-offset_right = 848.0
-offset_bottom = 146.072
-theme_override_colors/font_color = Color(0, 0, 0.721569, 1)
+offset_top = -9.0
+offset_right = 751.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_font_sizes/font_size = 100
-text = "Gold"
+text = "Gold:"
+
 script = SubResource("GDScript_a3nc1")

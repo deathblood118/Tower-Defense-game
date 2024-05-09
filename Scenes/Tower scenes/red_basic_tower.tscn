@@ -97,20 +97,20 @@ func _on_timer_timeout():
 func _on_range_pressed():
 	if Game.Gold >= 2:
 		Game.Gold -= 2
-	range += 30
+		range += 30
 
 
 func _on_attack_speed_pressed():
-	if Game.Gold >= 10:
-		Game.Gold -= 10
+	if Game.Gold >= 2:
+		Game.Gold -= 2
 		if reload <= 2:
 			reload += 0.1
 			timer.wait_time = 3 - reload
 
 
 func _on_power_pressed():
-	if Game.Gold >= 10:
-		Game.Gold -= 10
+	if Game.Gold >= 2:
+		Game.Gold -= 2
 		bulletDamage += 1
 	
 func update_powers():
@@ -122,7 +122,7 @@ func update_powers():
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ecca6"]
-radius = 59.574
+radius = 50.04
 
 [sub_resource type="GDScript" id="GDScript_g7mk6"]
 script/source = "extends CollisionShape2D
@@ -220,11 +220,11 @@ script = SubResource("GDScript_mk3v6")
 metadata/_edit_horizontal_guides_ = [-704.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-8.99999, 4.00005)
 shape = SubResource("CircleShape2D_ecca6")
+one_way_collision = true
 
 [node name="Aim" type="Marker2D" parent="."]
-position = Vector2(40, 0)
+position = Vector2(60, 0)
 gizmo_extents = 0.0
 
 [node name="TowerDefenseTile250" type="Sprite2D" parent="."]

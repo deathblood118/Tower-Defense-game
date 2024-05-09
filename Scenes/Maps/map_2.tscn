@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3r640jdh35j6"]
+[gd_scene load_steps=15 format=3 uid="uid://c3r640jdh35j6"]
 
+[ext_resource type="Script" path="res://Scenes/Maps/map_2.gd" id="1_ex5f6"]
 [ext_resource type="Texture2D" uid="uid://cftsyatdodiwh" path="res://Assets/Environment/Tilesets/sloppymess (1).png" id="1_naka3"]
 [ext_resource type="Texture2D" uid="uid://c6pi1isf7kgr5" path="res://Assets/Environment/Tilesets/water tile 32 x32.png" id="2_o37xb"]
 [ext_resource type="Texture2D" uid="uid://cdkv7b3m35282" path="res://Assets/Environment/Props/bigger tree.png" id="4_l3ll5"]
 [ext_resource type="Texture2D" uid="uid://b3uvpdras88ik" path="res://Assets/Environment/Props/Set of Trees.png" id="5_ocmus"]
 [ext_resource type="Script" path="res://Scenes/Maps/PathSpawner.gd" id="5_uucmy"]
 [ext_resource type="PackedScene" uid="uid://h3vwsn41ye1v" path="res://UI.tscn" id="7_yx1b7"]
+[ext_resource type="PackedScene" uid="uid://bupc341ikskbg" path="res://pause_menu.tscn" id="8_nuq7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1ej0"]
 texture = ExtResource("1_naka3")
@@ -393,6 +395,7 @@ sources/3 = SubResource("TileSetAtlasSource_l4upx")
 sources/4 = SubResource("TileSetAtlasSource_x25ty")
 
 [node name="Map_2" type="Node2D"]
+script = ExtResource("1_ex5f6")
 metadata/_edit_horizontal_guides_ = [15.0]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -414,4 +417,17 @@ autostart = true
 
 [node name="UI" parent="." instance=ExtResource("7_yx1b7")]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 600.0
+autostart = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_nuq7o")]
+visible = false
+offset_left = 749.0
+offset_top = 588.0
+offset_right = 749.0
+offset_bottom = 588.0
+scale = Vector2(6, 6)
+
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

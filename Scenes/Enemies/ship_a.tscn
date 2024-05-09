@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://m0n4oip2j03r"]
 
-[ext_resource type="Texture2D" uid="uid://cldpwixmr27fw" path="res://Assets/Enemies/Boat_color1_1.png" id="1_do71q"]
+[ext_resource type="Texture2D" uid="uid://cldpwixmr27fw" path="res://Assets/Boat_color1_1.png" id="1_qxt01"]
 
 [sub_resource type="GDScript" id="GDScript_5iye4"]
 script/source = "extends CharacterBody2D
@@ -18,12 +18,18 @@ func _physics_process(delta):
 		
 	if Health <= 0:
 		death()
-		Game.Gold += 1
+
+		Game.Gold +=1
+
 	
 	
 func death():
 	get_parent().get_parent().queue_free()
 	
+func _process(delta):
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		queue_free()
 	
 "
 
@@ -61,7 +67,7 @@ shape = SubResource("CircleShape2D_56iwf")
 position = Vector2(4.00003, -0.928932)
 rotation = -1.5708
 scale = Vector2(1.88779, 0.864233)
-texture = ExtResource("1_do71q")
+texture = ExtResource("1_qxt01")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -40.0
