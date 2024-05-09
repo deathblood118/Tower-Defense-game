@@ -17,7 +17,9 @@ script/source = "extends Label
 var coin = preload(\"res://Assets/Game/towerDefense_tile272.png\")
 func _process(delta):
 	self.text = \"Gold: \" + str(Game.Gold)
+
 	
+
 "
 
 [node name="UI" type="CanvasLayer"]
@@ -62,6 +64,7 @@ text = "Health:"
 script = SubResource("GDScript_6kkoo")
 
 [node name="Gold" type="Label" parent="."]
+
 offset_left = 500.0
 offset_top = -9.0
 offset_right = 751.0
@@ -69,4 +72,5 @@ offset_bottom = 128.0
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "Gold:"
+
 script = SubResource("GDScript_a3nc1")

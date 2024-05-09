@@ -104,7 +104,6 @@ func _on_attack_speed_pressed():
 	if Game.Gold >= 2:
 		Game.Gold -= 2
 		if reload <= 2:
-		
 			reload += 0.1
 			timer.wait_time = 3 - reload
 
