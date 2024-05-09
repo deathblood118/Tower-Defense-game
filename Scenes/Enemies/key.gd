@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var hp =5
-@export var Health = hp -1
+@export var Health = 5
 # first hit doesn't register so -1 number
 
 

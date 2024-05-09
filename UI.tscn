@@ -8,7 +8,7 @@ script/source = "extends Label
 
 
 func _process(delta):
-	self.text = \"Health: \" + str(Game.Health)
+	self.text = \"Health: \" + str(Key.Health)
 "
 
 [sub_resource type="GDScript" id="GDScript_a3nc1"]

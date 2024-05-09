@@ -4,6 +4,8 @@ extends Node2D
 var enemy_scene = preload("res://scenes/Enemy.tscn") # Path to your Enemy scene
 var spawn_timer = Timer.new() # Timer for spawning enemies
 
+
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialize game setup here.

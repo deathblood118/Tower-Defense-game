@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var tower = preload("res://Scenes/Tower scenes/green_tower.tscn")
+@onready var tower = preload("res://Scenes/Tower scenes/red_basic_tower.tscn")
 var currTile
 
 

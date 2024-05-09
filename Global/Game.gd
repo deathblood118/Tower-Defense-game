@@ -2,4 +2,4 @@ extends Node
 
 
 var Gold = 15
-var Health = 5
+var Health = Key.Health
