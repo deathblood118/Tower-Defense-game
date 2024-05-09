@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tower Defense"
-run/main_scene="res://scene_handler.tscn"
+run/main_scene="res://SceneHandler.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

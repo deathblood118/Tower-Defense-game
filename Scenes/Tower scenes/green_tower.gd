@@ -1,13 +1,13 @@
 extends StaticBody2D
 
 var Bullet = preload("res://Scenes/Tower scenes/red_bullet.tscn" )
-var bulletDamage= 15
+var bulletDamage= 5
 var pathName
 var currTargets = []
 var curr
 
 var reload = 0
-var range = 400
+var range = 100
 
 @onready var timer = get_node("Upgrade/ProgressBar/Timer")
 var startShooting = false
@@ -17,6 +17,7 @@ func Shoot():
 	tempBullet.pathName = pathName
 	tempBullet.bulletDamage = bulletDamage
 	get_node("BulletContainer").add_child(tempBullet)
+	tempBullet.global_position = $Aim.global_position
 	
 
 func _process(delta):
@@ -86,18 +87,24 @@ func _on_timer_timeout():
 
 
 func _on_range_pressed():
-	range += 30
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		range += 30
 
 
 func _on_attack_speed_pressed():
-	if reload <= 2:
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		if reload <= 2:
 		
-		reload += 0.1
-	timer.wait_time = 3 - reload
+			reload += 0.1
+			timer.wait_time = 3 - reload
 
 
 func _on_power_pressed():
-	bulletDamage += 1
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		bulletDamage += 1
 	
 func update_powers():
 	get_node("Upgrade/Upgrade/HBoxContainer/Range/Label").text = str(range)

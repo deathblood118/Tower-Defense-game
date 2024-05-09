@@ -9,7 +9,7 @@
 script/source = "extends StaticBody2D
 
 var Bullet = preload(\"res://Scenes/Tower scenes/red_bullet.tscn\" )
-var bulletDamage= 5
+var bulletDamage= 10
 var pathName
 var currTargets = []
 var curr
@@ -95,18 +95,24 @@ func _on_timer_timeout():
 
 
 func _on_range_pressed():
-	range += 30
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		range += 30
 
 
 func _on_attack_speed_pressed():
-	if reload <= 2:
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		if reload <= 2:
 		
-		reload += 0.1
-	timer.wait_time = 3 - reload
+			reload += 0.1
+			timer.wait_time = 3 - reload
 
 
 func _on_power_pressed():
-	bulletDamage += 1
+	if Game.Gold >= 2:
+		Game.Gold -= 2
+		bulletDamage += 1
 	
 func update_powers():
 	get_node(\"Upgrade/Upgrade/HBoxContainer/Range/Label\").text = str(range)

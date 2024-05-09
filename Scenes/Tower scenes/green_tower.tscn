@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://tower-import/towerDefense_tile249.png" id="1_bcsvw"]
 [ext_resource type="Script" path="res://Scenes/Tower scenes/green_tower.gd" id="1_n7s7p"]
-[ext_resource type="Texture2D" uid="uid://3n80oom64xoa" path="res://tower-import/towerDefense_tile249.png" id="2_h6mpa"]
 [ext_resource type="Texture2D" uid="uid://bfypjk005gqpy" path="res://Assets/UI/towerDefense_tile110.png" id="3_81v4e"]
 [ext_resource type="Texture2D" uid="uid://1eqb70dsj166" path="res://Assets/UI/towerDefense_tile297.png" id="4_ew26l"]
 [ext_resource type="Texture2D" uid="uid://c66toj8pg1bhq" path="res://Assets/UI/towerDefense_tile296.png" id="5_vsgbe"]
@@ -89,7 +88,6 @@ input_pickable = true
 script = ExtResource("1_n7s7p")
 
 [node name="TowerDefenseTile249" type="Sprite2D" parent="."]
-rotation = -1.5708
 texture = ExtResource("1_bcsvw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -221,4 +219,7 @@ autostart = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Range" to="." method="_on_range_pressed"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Attack Speed" to="." method="_on_attack_speed_pressed"]
+[connection signal="pressed" from="Upgrade/Upgrade/HBoxContainer/Power" to="." method="_on_power_pressed"]
 [connection signal="timeout" from="Upgrade/ProgressBar/Timer" to="." method="_on_timer_timeout"]

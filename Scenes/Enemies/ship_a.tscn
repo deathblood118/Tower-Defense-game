@@ -6,7 +6,7 @@
 script/source = "extends CharacterBody2D
 
 @export var speed = 1000
-var Health = 5
+var Health = 10
 
 
 func _physics_process(delta):
@@ -18,6 +18,7 @@ func _physics_process(delta):
 		
 	if Health <= 0:
 		death()
+		Game.Gold +=1
 	
 	
 func death():
